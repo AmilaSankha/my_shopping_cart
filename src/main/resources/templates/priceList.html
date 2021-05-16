@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price list</title>
+    <!--<script src="https://unpkg.com/vue"></script>-->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+</head>
+<body>
+
+
+
+
+<div class="container">
+
+    <div style="margin: 5%">
+        <h2>Product Price List</h2>
+    </div>
+
+
+
+    <div id="priceListTable">
+
+        <table class="table table-bordered table-sm">
+            <thead class="thead-dark">
+            <tr>
+                <th> Product Name </th>
+                <th> Units Per Carton </th>
+                <th> Carton Price </th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr class="form-group" v-for="item in priceList">
+                <td >{{item.name}}</td>
+                <td >{{item.unitPerCarton}}</td>
+                <td >{{item.cartonPrice}}</td>
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<script>
+    const apiURL = "http://localhost:8080/product/priceList";
+    new Vue({
+        el: '#priceListTable',
+        data: {
+            priceList: []
+        },
+        created() {
+            fetch(apiURL)
+                .then(res=>{
+                    return res.json()
+                })
+                .then(msg=>{
+                    this.priceList = msg;
+                })
+
+        }
+    });
+
+</script>
+</body>
+</html>
