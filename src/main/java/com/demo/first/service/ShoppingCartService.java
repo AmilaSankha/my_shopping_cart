@@ -41,11 +41,11 @@ public class ShoppingCartService {
 
     private double getPriceWithoutDiscount(int cartonQty, int singleUnitQty, Product product) {
         return cartonQty * product.getCartonPrice()
-                + singleUnitQty * (product.getCartonPrice() / product.getUnitPerCarton()) * 1.3;
+                + singleUnitQty * (product.getCartonPrice() / product.getUnitPerCarton()) * 1.3; // add 30% for single unit
     }
 
     private double getDiscount(int cartonQty, double priceWithoutDiscount) {
-        if (cartonQty >= 3) return priceWithoutDiscount * 0.1;
+        if (cartonQty >= 3) return priceWithoutDiscount * 0.1; // 10% discount if carton count >= 3
         return 0;
     }
 }

@@ -44,17 +44,20 @@
 
         </div>
 
-            <button type="button" class="btn btn-primary" onclick="getTotalPrice()">submit</button>
+            <button type="button" class="btn btn-primary" onclick="getTotalPrice()">Search</button>
 
         <div v-if="status=='error'" class="alert alert-danger form-row col-md-8" style="margin-top: 5%" >
-            productName & Quantity Unit can't be empty
+            Product Name & Quantity Unit can't be empty
         </div>
         <div v-if="status=='success'" class="alert alert-success form-row col-md-8" style="margin-top: 5%" >
-            Total Price : {{price.totalPrice}}  ( {{price.cartonQuantity}} carton & {{price.singleUnitQuantity}} single units)
+            <b>Total Price : {{price.totalPrice}} </b> ( {{price.cartonQuantity}} cartons & {{price.singleUnitQuantity}} single units)
         </div>
 
     </form>
 
+    <a href="http://localhost:8080/view/priceList" class="tile orange"> Goto the Product Price List</a>
+    <br>
+    <a href="http://localhost:8080/" class="tile orange"> Goto Home</a>
 
 </div>
 <br>
